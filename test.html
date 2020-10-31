@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<div id = htmlEmbed></div>
+<html>
+   <head>
+      <script type = "text/javascript" src = "https://d3js.org/d3.v5.js"></script>
+   </head>
+
+   <body>
+		<script>
+			var width = 4*80,
+		    height = 4*80;
+
+			var svg = d3.select("body").append("svg")
+    		.attr("width", width)
+    		.attr("height", height);
+	
+			var g = svg.append("g");
+
+			moves = [[1,2],[3,4],[5,2]]
+			
+			var img = g.append("svg:image")
+				.data([0,1,2])
+				.attr("xlink:href", "https://upload.wikimedia.org/wikipedia/commons/e/ef/Chess_ndt45.svg")
+				.attr("width", 40)
+				.attr("height", 40)
+			
+
+			for (var i = 0; i < moves.length; i++) {        
+					img.transition()
+					.attr("x", moves[i][0]*40)
+					.attr("y", moves[i][1]*40)
+					.end();
+				}
+		</script>   
+   </body>
+</html>
